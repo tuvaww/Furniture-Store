@@ -1,0 +1,23 @@
+@mixin phone-level-1 {
+  @media (min-width: 500px) {
+    @content;
+  }
+}
+
+@mixin phone-level-2 {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin phone-level-3 {
+  @media (min-width: 700px) {
+    @content;
+  }
+}
+
+@mixin tablet-level-1 {
+  @media (min-width: 778px) {
+    @content;
+  }
+}
