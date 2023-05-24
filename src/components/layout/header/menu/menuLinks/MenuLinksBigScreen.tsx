@@ -12,7 +12,6 @@ export const MenuLinksBigScreen = (props: IProps) => {
       <h2
         onMouseEnter={() => setOnHover(true)}
         onMouseLeave={() => setOnHover(false)}
-        //className='mainLink'
         className={`${onHover ? "mainLinkHover" : "mainLink"}`}
       >
         {props.link.title}

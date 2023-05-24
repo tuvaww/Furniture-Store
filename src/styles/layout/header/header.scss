@@ -11,6 +11,15 @@ header {
   width: 100vw;
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
+
+  @include tablet-level-2 {
+    margin-bottom: 50px;
+  }
+
+  @include desktop-level-3 {
+    margin-bottom: 70px;
+  }
 
   .firstRow {
     height: 70%;
@@ -18,6 +27,13 @@ header {
     display: flex;
     justify-content: space-between;
 
+    @include tablet-level-2 {
+      margin-top: 10px;
+    }
+
+    @include desktop-level-3 {
+      margin-top: 20px;
+    }
     .logoMenuContainer {
       margin-left: 20px;
       height: 100%;
@@ -65,7 +81,6 @@ header {
           border-radius: 10px;
           border: none;
           background-color: rgba(0, 0, 0, 0.25);
-          margin-top: 10px;
         }
       }
     }
@@ -116,15 +131,37 @@ header {
       display: none;
       @include tablet-level-1 {
         width: 100%;
-        margin: 0px 60px 0 60px;
+        margin: 25px 60px 0 60px;
+
+        @include desktop-level-2 {
+          margin-top: 20px;
+          width: 80%;
+        }
+
+        @include desktop-level-3 {
+          margin-top: 40px;
+          width: 70%;
+        }
 
         display: flex;
         justify-content: space-between;
 
         .menuLinkContainer {
-          font-size: 8pt;
           font-family: "Quicksand", sans-serif;
           cursor: pointer;
+
+          .mainLink,
+          .mainLinkHover {
+            font-size: 11pt;
+
+            @include tablet-level-2 {
+              font-size: 14pt;
+            }
+
+            @include desktop-level-3 {
+              font-size: 15pt;
+            }
+          }
 
           .mainLinkHover {
             color: $lightGreen;

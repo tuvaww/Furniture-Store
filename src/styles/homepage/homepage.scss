@@ -1,0 +1,111 @@
+@import "../mixins/viewportSizes/viewportSizes";
+@import "../mixins/variables/variables";
+
+.mainHomepageContainer {
+  .homepageCarouselContainer {
+    width: 100%;
+
+    .carousel-item {
+      width: 100%;
+      height: 60vh;
+
+      @include tablet-level-1 {
+        height: 70vh;
+      }
+      @include desktop-level-1 {
+        height: 60vh;
+      }
+      .carouselImg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .homePageNewInContainer {
+    width: 100%;
+    padding-left: 20px;
+    margin-top: 80px;
+
+    .newInPreviewHeadingRow {
+      width: 100%;
+      margin-bottom: 10px;
+
+      .newInPreviewHeadingCol {
+        width: 100%;
+
+        .newInPreviewHeading {
+          font-size: 17pt;
+        }
+      }
+    }
+
+    .newInPreviewRow {
+      overflow-x: scroll;
+      display: flex;
+      flex-wrap: nowrap;
+      width: 100%;
+      height: 400px;
+
+      .newInPreviewCol {
+        width: 100%;
+        height: 100%;
+
+        .newInCardContainer {
+          width: 270px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          .newInCardImgContainer {
+            height: 80%;
+            width: 100%;
+
+            .newInCardImg {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              box-shadow: $softShadow;
+            }
+          }
+
+          .newInCardTitleContainer {
+            width: 100%;
+            .newInCardTitle {
+              font-size: 11pt;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .homepageCategoriesContainer {
+    width: 100%;
+    padding-left: 20px;
+    margin-top: 80px;
+
+    .categoryCard {
+      width: 50%;
+      height: 400px;
+      position: relative;
+
+      .categoryCardHeading {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+      }
+
+      .categoryCardImg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        box-shadow: $softShadow;
+      }
+    }
+  }
+}

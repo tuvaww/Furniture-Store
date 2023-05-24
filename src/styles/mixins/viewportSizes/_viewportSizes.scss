@@ -21,3 +21,32 @@
     @content;
   }
 }
+
+@mixin tablet-level-2 {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin tablet-level-3 {
+  @media (min-width: 960px) {
+    @content;
+  }
+}
+
+@mixin desktop-level-1 {
+  @media (min-width: 1100px) {
+    @content;
+  }
+}
+
+@mixin desktop-level-2 {
+  @media (min-width: 1300px) {
+    @content;
+  }
+}
+
+@mixin desktop-level-3 {
+  @media (min-width: 1500px) {
+    @content;
+  }
+}
