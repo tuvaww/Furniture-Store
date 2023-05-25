@@ -85,12 +85,37 @@
   .homepageCategoriesContainer {
     width: 100%;
     padding-left: 20px;
+    padding-right: 20px;
     margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 
     .categoryCard {
-      width: 50%;
+      width: calc(50% - 10px);
       height: 400px;
       position: relative;
+
+      @include phone-level-2 {
+        height: 500px;
+      }
+
+      @include tablet-level-2 {
+        height: 600px;
+      }
+
+      @include desktop-level-0 {
+        width: calc(40%);
+      }
+      @include desktop-level-1 {
+        height: 700px;
+      }
+
+      @include desktop-level-3 {
+        width: calc(30%);
+      }
 
       .categoryCardHeading {
         position: absolute;
