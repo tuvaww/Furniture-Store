@@ -1,0 +1,44 @@
+@import "../mixins/viewportSizes/viewportSizes";
+@import "../mixins/variables/variables";
+
+.productContainer {
+  width: 95%;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  .productImage {
+    width: 100%;
+    height: 80%;
+    height: 500px;
+    position: relative;
+
+    .productHeartIcon {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 17pt;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .productInfoContainer {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .productMeasurementContainer {
+    margin-top: 10px;
+
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+}

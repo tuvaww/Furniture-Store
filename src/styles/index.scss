@@ -1,7 +1,20 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+@import "./mixins/variables/variables";
 body {
   margin: 0;
   font-family: "Quicksand", sans-serif;
+}
+
+.removeDefaultLinkStyle {
+  text-decoration: none;
+}
+
+.softShadow {
+  box-shadow: $softShadow;
+}
+
+p {
+  margin: 0;
 }

@@ -9,13 +9,19 @@ export const MenuLinksBigScreen = (props: IProps) => {
   const [onHover, setOnHover] = useState(false);
   return (
     <div className='menuLinkContainer'>
-      <h2
-        onMouseEnter={() => setOnHover(true)}
-        onMouseLeave={() => setOnHover(false)}
-        className={`${onHover ? "mainLinkHover" : "mainLink"}`}
+      <a
+        href={props.link.url}
+        className='removeDefaultLinkStyle'
+        style={{ color: "black" }}
       >
-        {props.link.title}
-      </h2>
+        <h2
+          onMouseEnter={() => setOnHover(true)}
+          onMouseLeave={() => setOnHover(false)}
+          className={`${onHover ? "mainLinkHover" : "mainLink"}`}
+        >
+          {props.link.title}
+        </h2>
+      </a>
 
       {/*  {l.underCategory.map((u: INavigationBase) => {
           return (

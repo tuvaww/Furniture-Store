@@ -1,10 +1,13 @@
 @import "../../mixins/variables/variables";
-
+@import "../../mixins/viewportSizes/viewportSizes";
 .hideMenuModal {
   display: none;
 }
 
 .menuModal {
+  @include tablet-level-1 {
+    display: none;
+  }
   overflow-y: auto;
   box-shadow: rgba(0, 0, 0, 0.5) 200px 0px 0px;
   z-index: 100;

@@ -8,28 +8,28 @@ export const menuLinks: INavigation[] = [
   },
   {
     title: "Furniture",
-    url: "/",
+    url: "/products/search?category=furniture",
     underCategory: [
       { title: "Tables", url: "/" },
       { title: "Chairs", url: "/" },
       { title: "TV Benches", url: "/" },
-      { title: "Couches", url: "/" },
+      { title: "Sofas", url: "/" },
     ],
   },
   {
     title: "Exterior",
-    url: "/",
+    url: "/products/search?category=exterior",
     underCategory: [
       { title: "Outdoor Tables", url: "/" },
       { title: "Outdoor Chairs", url: "/" },
-      { title: "Sofa Groups", url: "/" },
-      { title: "Outdoor Couches", url: "/" },
+      { title: "Lounge Groups", url: "/" },
+      { title: "Outdoor Sofas", url: "/" },
       { title: "Parasoles", url: "/" },
     ],
   },
   {
     title: "Lighting",
-    url: "/",
+    url: "/products/search?category=lighting",
     underCategory: [
       { title: "Wall Lamps", url: "/" },
       { title: "Floor Lamps", url: "/" },
@@ -41,7 +41,7 @@ export const menuLinks: INavigation[] = [
   },
   {
     title: "Storage",
-    url: "/",
+    url: "/products/search?category=storage",
     underCategory: [
       { title: "Bookshelfs", url: "/" },
       { title: "Cabinets", url: "/" },
@@ -52,16 +52,16 @@ export const menuLinks: INavigation[] = [
   },
   {
     title: "Textile",
-    url: "/",
+    url: "/products/search?category=textile",
     underCategory: [
       { title: "Mats", url: "/" },
-      { title: "Drapers", url: "/" },
+      { title: "Blankets", url: "/" },
       { title: "Pillows", url: "/" },
     ],
   },
   {
-    title: "Decorations",
-    url: "/",
+    title: "Decoration",
+    url: "/products/search?category=decoration",
     underCategory: [
       { title: "Vases", url: "/" },
       { title: "Test", url: "/" },

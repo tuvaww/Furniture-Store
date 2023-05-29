@@ -61,4 +61,13 @@ export const itemsServices = {
 
     return item;
   },
+  getItemByType: async (type: string) => {
+    const q = query(collectionRef, where("type", "==", "furniture"));
+
+    const querySnapshot = await getDocs(q);
+    let data = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
+
+    const convertType = data as IItem[];
+    return convertType;
+  },
 };
