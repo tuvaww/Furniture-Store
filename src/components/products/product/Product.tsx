@@ -2,6 +2,7 @@ import {
   ArrowDownUp,
   ArrowLeftRight,
   ArrowsAngleExpand,
+  BagPlus,
   Heart,
 } from "react-bootstrap-icons";
 import { IItem } from "../../../models/items/IItem";
@@ -14,6 +15,7 @@ interface IProps {
 export const Product = (props: IProps) => {
   //console.log("product", props.product);
   const [showMeasurement, setShowMeasurement] = useState(false);
+  const [timeoutId, setTimeoutId] = useState<any>();
 
   const getColors = props.product.colors.map((c: string, i: number) => {
     if (i > 2) {
@@ -38,11 +40,24 @@ export const Product = (props: IProps) => {
     }
   });
 
+  const startTimeout = () => {
+    const time = setTimeout(() => {
+      setShowMeasurement(true);
+    }, 2000);
+
+    setTimeoutId(time);
+  };
+
+  const cancel = () => {
+    clearTimeout(timeoutId);
+    setShowMeasurement(false);
+  };
+
   return (
     <section
       className='productContainer '
-      onMouseEnter={() => setShowMeasurement(true)}
-      onMouseLeave={() => setShowMeasurement(false)}
+      onMouseEnter={startTimeout}
+      onMouseLeave={cancel}
     >
       <div className='productImage'>
         <Heart className='productHeartIcon' />
@@ -55,7 +70,10 @@ export const Product = (props: IProps) => {
       <div className='productInfoContainer'>
         <p>{props.product.title}</p>
         <div>{getColors}</div>
-        <p>{props.product.price} €</p>
+        <div className='d-flex flex-row align-items-center justify-content-between'>
+          <p>{props.product.price} €</p>
+          <BagPlus style={{ fontSize: "15pt" }} />
+        </div>
       </div>
 
       {showMeasurement && (

@@ -45,6 +45,12 @@
   }
 }
 
+@mixin desktop-level-1200 {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
 @mixin desktop-level-2 {
   @media (min-width: 1300px) {
     @content;

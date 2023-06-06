@@ -44,6 +44,36 @@ export const Products = () => {
       <section className='breadCrumbsContainer'>
         <h4 className='breadCrumbs'>{getLocation()}</h4>
       </section>
+      <section className='categoriesContainer'>
+        {/*   <div className='categorySection'>
+          <img
+            src='https://firebasestorage.googleapis.com/v0/b/furniture-store-hobby.appspot.com/o/assets%2Ffurniture.webp?alt=media&token=eaf94a72-ad8f-4a8c-ab0a-ed57b9598147&_gl=1*mcjjyv*_ga*NDcwNjE0NTUxLjE2ODQ5NDAzMTE.*_ga_CW55HF8NVT*MTY4NjA1ODgwOC4xMS4xLjE2ODYwNTg4MjMuMC4wLjA.'
+            alt=''
+          />
+
+          <p>Tables</p>
+        </div>
+
+        <div className='categorySection'>
+          <img
+            src='https://firebasestorage.googleapis.com/v0/b/furniture-store-hobby.appspot.com/o/assets%2Ffurniture.webp?alt=media&token=eaf94a72-ad8f-4a8c-ab0a-ed57b9598147&_gl=1*mcjjyv*_ga*NDcwNjE0NTUxLjE2ODQ5NDAzMTE.*_ga_CW55HF8NVT*MTY4NjA1ODgwOC4xMS4xLjE2ODYwNTg4MjMuMC4wLjA.'
+            alt=''
+          />
+
+          <p>Tables</p>
+        </div>
+        <div className='categorySection'>
+          <img
+            src='https://firebasestorage.googleapis.com/v0/b/furniture-store-hobby.appspot.com/o/assets%2Ffurniture.webp?alt=media&token=eaf94a72-ad8f-4a8c-ab0a-ed57b9598147&_gl=1*mcjjyv*_ga*NDcwNjE0NTUxLjE2ODQ5NDAzMTE.*_ga_CW55HF8NVT*MTY4NjA1ODgwOC4xMS4xLjE2ODYwNTg4MjMuMC4wLjA.'
+            alt=''
+          />
+
+        </div> */}
+        <p>Chairs</p>
+        <p>Sofas</p>
+        <p>Tv Benches</p>
+        <p>Tables</p>
+      </section>
 
       <section className='productsContainer'>{productsHTML}</section>
     </main>

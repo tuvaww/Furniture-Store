@@ -59,6 +59,14 @@ header {
         font-family: $logoFont;
         font-size: 19pt;
         margin-left: 20px;
+
+        @include tablet-level-1 {
+          margin-left: 0;
+        }
+
+        h1 {
+          margin: 0;
+        }
       }
     }
 

@@ -2,15 +2,25 @@
 @import "../mixins/variables/variables";
 
 .productContainer {
-  width: 95%;
+  width: 100%;
   height: 650px;
   display: flex;
   flex-direction: column;
+
+  @include tablet-level-1 {
+    width: calc(50% - 10px);
+  }
+
+  @include desktop-level-1200 {
+    width: calc(33.3% - 10px);
+  }
+
   .productImage {
     width: 100%;
     height: 80%;
     height: 500px;
     position: relative;
+    cursor: pointer;
 
     .productHeartIcon {
       position: absolute;

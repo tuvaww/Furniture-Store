@@ -5,20 +5,65 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
 
   .breadCrumbsContainer {
     width: 100%;
-    padding-left: 10px;
+    margin-bottom: 30px;
 
     .breadCrumbs {
-      font-size: 12pt;
+      font-size: 15pt;
     }
+  }
+
+  .categoriesContainer {
+    width: 100%;
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    /*  display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    .categorySection {
+      width: 100%;
+      height: 150px;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      p {
+        position: absolute;
+        z-index: 10;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        font-size: 15pt;
+      }
+    } */
   }
 
   .productsContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    // gap: 10px;
+
+    width: 100%;
+
+    @include tablet-level-1 {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
   }
 }

@@ -8,6 +8,7 @@ import { MenuLinksBigScreen } from "./menu/menuLinks/MenuLinksBigScreen";
 import { MenuModal } from "./menu/smallScreenMenu/MenuModal";
 import { menuLinks } from "./menuLinks";
 import { SearchBar } from "./searchBar/SearchBar";
+import { Bag, Heart, Person } from "react-bootstrap-icons";
 
 export const Header = () => {
   const [showMenuModal, setShowMenuModal] = useState(false);
@@ -40,9 +41,9 @@ export const Header = () => {
           </section>
 
           <section className='iconsContainer'>
-            <i className='bi bi-person'></i>
-            <i className='bi bi-heart'></i>
-            <i className='bi bi-basket'></i>
+            <Person className='bi bi-person' />
+            <Heart className='bi bi-heart' />
+            <Bag className='bi' />
           </section>
         </div>
 
