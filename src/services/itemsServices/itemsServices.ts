@@ -29,24 +29,13 @@ export const itemsServices = {
   },
 
   getItemById: async (id: string) => {
-    const ref = doc(db, "items", id);
-    const docSnap = await getDoc(ref);
+    const q = query(collectionRef, where("id", "==", id));
+    const querySnapshot = await getDocs(q);
+    let data = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
 
-    // console.log("doc snap", docSnap.data());
-
-    const data = docSnap.data();
-
-    const convertType = data as IItem;
+    const convertType = data as IItem[];
 
     return convertType;
-
-    /*  const q = query(collectionRef, where("id", "==", id));
-
-    const item = await getDocs(q).then((item) => {
-      let data = item.docs.map((doc) => ({ ...doc.data() }));
-      console.log("data", data);
-      return data;
-    }); */
   },
   getNewItems: async (Limit: number) => {
     const q = query(collectionRef, orderBy("uploaded", "desc"), limit(Limit));

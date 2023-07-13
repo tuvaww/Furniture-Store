@@ -18,7 +18,6 @@ export const Products = () => {
   const getProducts = async (c: string) => {
     const products = await itemsServices.getItemByType(c);
     setProducts(products);
-    console.log("products", products);
   };
 
   const getLocation = () => {
@@ -35,7 +34,6 @@ export const Products = () => {
   };
 
   const productsHTML = products.map((p: IItem, i: number) => {
-    //console.log("id", p.id);
     return <Product key={i} product={p} />;
   });
 
@@ -69,10 +67,10 @@ export const Products = () => {
           />
 
         </div> */}
-        <p>Chairs</p>
+        {/* <p>Chairs</p>
         <p>Sofas</p>
         <p>Tv Benches</p>
-        <p>Tables</p>
+        <p>Tables</p> */}
       </section>
 
       <section className='productsContainer'>{productsHTML}</section>

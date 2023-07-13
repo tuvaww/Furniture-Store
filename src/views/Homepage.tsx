@@ -31,10 +31,10 @@ export const Homepage = () => {
   }, []);
 
   const getHeroCarouselItem = async () => {
-    const heroItem = await itemsServices.getItemById("UmQbuqgLvdw4vq0worLh");
+    const heroItem = await itemsServices.getItemById("11");
 
     if (heroItem) {
-      setHeroCarouselItem(heroItem);
+      setHeroCarouselItem(heroItem[0]);
     }
   };
 
@@ -43,10 +43,10 @@ export const Homepage = () => {
     setNewInPreviewArr(data);
   };
 
-  const newInPreviews = newInPreviewArr.map((n: IItem) => {
+  const newInPreviews = newInPreviewArr.map((n: IItem, i: number) => {
     return (
-      <Col className='newInPreviewCol'>
-        <NewInPreviewCard key={n.id} item={n} />
+      <Col key={i} className='newInPreviewCol'>
+        <NewInPreviewCard item={n} />
       </Col>
     );
   });

@@ -8,12 +8,13 @@ import {
 import { IItem } from "../../../models/items/IItem";
 import "../../../styles/products/product.scss";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
   product: IItem;
 }
 export const Product = (props: IProps) => {
-  //console.log("product", props.product);
+  const navigate = useNavigate();
   const [showMeasurement, setShowMeasurement] = useState(false);
   const [timeoutId, setTimeoutId] = useState<any>();
 
@@ -48,16 +49,22 @@ export const Product = (props: IProps) => {
     setTimeoutId(time);
   };
 
-  const cancel = () => {
+  const cancelTimeout = () => {
     clearTimeout(timeoutId);
     setShowMeasurement(false);
   };
 
+  const handleShowProductDetails = () => {
+    console.log("prod", props.product);
+    navigate(`/products/product/${props.product.id}`);
+  };
+
   return (
     <section
+      onClick={handleShowProductDetails}
       className='productContainer '
       onMouseEnter={startTimeout}
-      onMouseLeave={cancel}
+      onMouseLeave={cancelTimeout}
     >
       <div className='productImage'>
         <Heart className='productHeartIcon' />

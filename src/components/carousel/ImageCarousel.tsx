@@ -7,7 +7,7 @@ interface IProps {
 export const ImageCarousel = (props: IProps) => {
   const carouselItem = props.item.images.map((img: string) => {
     return (
-      <Carousel.Item key={img}>
+      <Carousel.Item key={img} className='carouselItem'>
         <img
           className='carouselImg'
           style={{ width: "100%" }}

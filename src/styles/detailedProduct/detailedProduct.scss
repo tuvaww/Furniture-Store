@@ -1,0 +1,120 @@
+@import "../mixins/variables/variables";
+@import "../mixins/viewportSizes/viewportSizes";
+
+.detailedProductMain {
+  width: 100vw;
+
+  .detailedProdHeaderContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 15px 0px 15px;
+    margin-top: 60px;
+
+    .detailedProdHeader {
+      font-size: 20pt;
+    }
+
+    .detailedProdHeart {
+      font-size: 20pt;
+    }
+  }
+
+  .detailedProdCarouselContainer {
+    height: 300px;
+    margin-top: 30px;
+
+    .carouselWrapper {
+      height: 300px;
+
+      .carouselItem {
+        height: 300px;
+        .carouselImg {
+          height: 100%;
+
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  .detailedProdInfoContainer {
+    width: 100%;
+    padding: 0 15px 0 15px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .detailedProdInfo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .detailedProdInfoQty {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .handleQty {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .qtyHandlers {
+          font-size: 15pt;
+        }
+      }
+
+      .displayQty {
+        background-color: rgb(218, 222, 232);
+        width: 50px;
+        text-align: center;
+      }
+    }
+
+    .detailedProdInfoAddToCartButtonContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+      .addToCartButton {
+        padding: 5px 20px 5px 20px;
+        font-size: 10pt;
+        border-radius: 5px;
+        box-shadow: $softShadow;
+        border: 0;
+      }
+    }
+  }
+
+  .detailedProdSpecifiedInfoContainer {
+    border-top: 1px solid grey;
+    margin-top: 40px;
+
+    .specifiedInfoChevron {
+      font-size: 15pt;
+      cursor: pointer;
+    }
+
+    .specifiedProductInfoContainer {
+      padding: 10px 15px 10px 15px;
+      .specifiedProductInfoHeaderContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid grey;
+
+        .specifiedProductInfoHeader {
+          font-size: 15pt;
+        }
+      }
+      .specifiedProductInfoText {
+        margin-top: 30px;
+      }
+    }
+  }
+}
