@@ -3,6 +3,13 @@
 
 .detailedProductMain {
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+
+  @include desktop-level-0 {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
   .detailedProdHeaderContainer {
     width: 100%;
@@ -10,7 +17,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 0px 15px 0px 15px;
-    margin-top: 60px;
 
     .detailedProdHeader {
       font-size: 20pt;
@@ -23,17 +29,68 @@
 
   .detailedProdCarouselContainer {
     height: 300px;
+    width: 100%;
     margin-top: 30px;
+
+    @include tablet-level-1 {
+      height: auto;
+    }
+
+    @include desktop-level-0 {
+      width: calc(60% - 15px);
+      margin-left: 15px;
+      margin-top: 20px;
+    }
 
     .carouselWrapper {
       height: 300px;
 
+      @include tablet-level-1 {
+        height: 400px;
+      }
+
       .carouselItem {
         height: 300px;
+        @include tablet-level-1 {
+          height: 400px;
+        }
         .carouselImg {
           height: 100%;
 
           object-fit: cover;
+        }
+      }
+    }
+
+    .bigScreenCarouselImagesContainer {
+      display: none;
+
+      @include tablet-level-1 {
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+        gap: 20px;
+        margin-top: 30px;
+        width: 100vw;
+        overflow-x: scroll;
+        padding: 0 20px 0 20px;
+        padding-bottom: 20px;
+      }
+
+      @include desktop-level-0 {
+        width: 100%;
+        padding: 0;
+      }
+
+      .bigScreenCarouselImg {
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+          rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        cursor: pointer;
+        width: 15%;
+        aspect-ratio: 2/2;
+
+        @include desktop-level-0 {
+          width: 25%;
         }
       }
     }
@@ -46,10 +103,29 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    @include desktop-level-0 {
+      width: calc(40% - 15px);
+    }
     .detailedProdInfo {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      /*  @include desktop-level-0 {
+        flex-direction: column;
+        gap: 5px;
+      } */
+    }
+
+    .detailedProdInfoColors {
+      display: flex;
+      gap: 10px;
+
+      /*  @include desktop-level-0 {
+        width: 100%;
+        justify-content: center;
+      } */
     }
 
     .detailedProdInfoQty {
@@ -58,6 +134,12 @@
       justify-content: space-between;
       align-items: center;
 
+      /*  @include desktop-level-0 {
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+      } */
+
       .handleQty {
         display: flex;
         align-items: center;
@@ -65,6 +147,7 @@
 
         .qtyHandlers {
           font-size: 15pt;
+          cursor: pointer;
         }
       }
 
@@ -81,6 +164,10 @@
       justify-content: center;
       align-items: center;
       margin-top: 30px;
+
+      /* @include desktop-level-0 {
+        margin-top: 10px;
+      } */
       .addToCartButton {
         padding: 5px 20px 5px 20px;
         font-size: 10pt;
@@ -89,31 +176,36 @@
         border: 0;
       }
     }
-  }
+    .detailedProdSpecifiedInfoContainer {
+      border-top: 1px solid grey;
+      border-bottom: 1px solid grey;
 
-  .detailedProdSpecifiedInfoContainer {
-    border-top: 1px solid grey;
-    margin-top: 40px;
+      margin-top: 40px;
 
-    .specifiedInfoChevron {
-      font-size: 15pt;
-      cursor: pointer;
-    }
-
-    .specifiedProductInfoContainer {
-      padding: 10px 15px 10px 15px;
-      .specifiedProductInfoHeaderContainer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid grey;
-
-        .specifiedProductInfoHeader {
-          font-size: 15pt;
-        }
+      @include desktop-level-0 {
+        width: 100%;
       }
-      .specifiedProductInfoText {
-        margin-top: 30px;
+
+      .specifiedInfoChevron {
+        font-size: 15pt;
+        cursor: pointer;
+      }
+
+      .specifiedProductInfoContainer {
+        padding: 10px 15px 10px 15px;
+        .specifiedProductInfoHeaderContainer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid grey;
+
+          .specifiedProductInfoHeader {
+            font-size: 15pt;
+          }
+        }
+        .specifiedProductInfoText {
+          margin-top: 30px;
+        }
       }
     }
   }

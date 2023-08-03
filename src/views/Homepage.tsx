@@ -54,7 +54,10 @@ export const Homepage = () => {
   return (
     <main className='mainHomepageContainer d-flex flex-column align-center'>
       <section className='homepageCarouselContainer'>
-        <ImageCarousel item={heroCarouselItem}></ImageCarousel>
+        <ImageCarousel
+          item={heroCarouselItem}
+          useBigScreenCarouselItems={false}
+        />
       </section>
 
       <section className='homePageNewInContainer'>

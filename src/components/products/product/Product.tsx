@@ -55,7 +55,6 @@ export const Product = (props: IProps) => {
   };
 
   const handleShowProductDetails = () => {
-    console.log("prod", props.product);
     navigate(`/products/product/${props.product.id}`);
   };
 

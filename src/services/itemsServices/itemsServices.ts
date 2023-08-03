@@ -9,6 +9,7 @@ import {
   where,
   orderBy,
   limit,
+  startAt,
 } from "firebase/firestore";
 
 import { IItem } from "../../models/items/IItem";
@@ -57,6 +58,19 @@ export const itemsServices = {
     let data = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
 
     const convertType = data as IItem[];
+    return convertType;
+  },
+  getRecomendedItems: async (detailedType: string) => {
+    const q = query(
+      collectionRef,
+      where("detailedType", "==", detailedType),
+      limit(10)
+    );
+    const querySnapshot = await getDocs(q);
+    let data = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
+
+    const convertType = data as IItem[];
+
     return convertType;
   },
 };

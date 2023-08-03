@@ -12,6 +12,8 @@ import {
 } from "react-bootstrap-icons";
 import "../styles/detailedProduct/detailedProduct.scss";
 import { ImageCarousel } from "../components/carousel/ImageCarousel";
+import { DetailedInfo } from "../components/detailedProduct/detailedInfo/DetailedInfo";
+import { RecomendedProducts } from "../components/detailedProduct/recomendedProducts/RecomendedProducts";
 
 export const DetailedProduct = () => {
   const { id } = useParams();
@@ -31,19 +33,35 @@ export const DetailedProduct = () => {
     width: "",
   });
   const [hoverOnAddToCartButton, setHoverOnAddToCartButton] = useState(false);
-  const [showProductInfo, setShowProductInfo] = useState(false);
-  const [showShippingInfo, setShowShippingInfo] = useState(false);
+  const [qty, setQty] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     if (id) {
+      window.scrollTo(0, 0);
       getProduct();
     }
-  }, []);
+  }, [id]);
 
   const getProduct = async () => {
     if (id) {
       const prod = await itemsServices.getItemById(id);
       setProduct(prod[0]);
+    }
+  };
+
+  const handleQty = (type: string) => {
+    if (type === "minus") {
+      if (qty - 1 >= 0) {
+        setQty(qty - 1);
+        setTotalPrice(totalPrice - product.price);
+      } else {
+        return;
+      }
+    }
+    if (type === "plus") {
+      setQty(qty + 1);
+      setTotalPrice(totalPrice + product.price);
     }
   };
 
@@ -68,8 +86,9 @@ export const DetailedProduct = () => {
         <Heart className='detailedProdHeart' />
       </section>
       <section className='detailedProdCarouselContainer'>
-        <ImageCarousel item={product} />
+        <ImageCarousel item={product} useBigScreenCarouselItems={true} />
       </section>
+
       <section className='detailedProdInfoContainer'>
         <div className='detailedProdInfo'>
           <p>{product.title}</p>
@@ -78,13 +97,13 @@ export const DetailedProduct = () => {
         <div className='detailedProdInfoColors'>{getColorsOfProd}</div>
         <div className='detailedProdInfoQty'>
           <div className='handleQty'>
-            <Dash className='qtyHandlers' />{" "}
+            <Dash className='qtyHandlers' onClick={() => handleQty("minus")} />{" "}
             <div className='displayQty'>
-              <p>0</p>
+              <p>{qty}</p>
             </div>{" "}
-            <Plus className='qtyHandlers' />
+            <Plus className='qtyHandlers' onClick={() => handleQty("plus")} />
           </div>
-          <div className='displayedTotPrice'>200 $</div>
+          <div className='displayedTotPrice'>{totalPrice} $</div>
         </div>
         <div className='detailedProdInfoAddToCartButtonContainer'>
           <button
@@ -101,69 +120,10 @@ export const DetailedProduct = () => {
             ADD TO CART
           </button>
         </div>
+        <DetailedInfo productInfo={product.productInfo} />
       </section>
 
-      <section className='detailedProdSpecifiedInfoContainer'>
-        <div className='specifiedProductInfoContainer'>
-          <div
-            className='specifiedProductInfoHeaderContainer'
-            style={{
-              borderBottom: `${
-                showProductInfo ? "1px solid #febe8c" : "1px solid grey"
-              }`,
-            }}
-          >
-            <h6 className='specifiedProductInfoHeader'>Product Information</h6>
-
-            {showProductInfo ? (
-              <ChevronUp
-                className='specifiedInfoChevron'
-                onClick={() => setShowProductInfo(false)}
-              />
-            ) : (
-              <ChevronDown
-                className='specifiedInfoChevron'
-                onClick={() => setShowProductInfo(true)}
-              />
-            )}
-          </div>
-          {showProductInfo && (
-            <div className='specifiedProductInfoText'>
-              <p>{product.productInfo}</p>
-            </div>
-          )}
-        </div>
-
-        <div className='specifiedProductInfoContainer'>
-          <div
-            className='specifiedProductInfoHeaderContainer'
-            style={{
-              borderBottom: `${
-                showShippingInfo ? "1px solid #febe8c" : "1px solid grey"
-              }`,
-            }}
-          >
-            <h6 className='specifiedProductInfoHeader'>Shipping And Returns</h6>
-
-            {showShippingInfo ? (
-              <ChevronUp
-                className='specifiedInfoChevron'
-                onClick={() => setShowShippingInfo(false)}
-              />
-            ) : (
-              <ChevronDown
-                className='specifiedInfoChevron'
-                onClick={() => setShowShippingInfo(true)}
-              />
-            )}
-          </div>
-          {showShippingInfo && (
-            <div className='specifiedProductInfoText'>
-              <p>heeeeej</p>
-            </div>
-          )}
-        </div>
-      </section>
+      <RecomendedProducts detiledType={product.detailedType} />
     </main>
   );
 };
