@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   INavigation,
   INavigationBase,
@@ -9,13 +9,44 @@ import { MenuModal } from "./menu/smallScreenMenu/MenuModal";
 import { menuLinks } from "./menuLinks";
 import { SearchBar } from "./searchBar/SearchBar";
 import { Bag, Heart, Person } from "react-bootstrap-icons";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const [showMenuModal, setShowMenuModal] = useState(false);
+  const queryParams = new URLSearchParams(window.location.search);
+  const category = queryParams.get("category");
+  const [underCategories, setUnderCategories] = useState<INavigationBase[]>([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    menuLinks.map((l: INavigation) => {
+      if (l.title === category) {
+        setUnderCategories(l.underCategory);
+      }
+    });
+  }, [category]);
 
   const menuLinksJSX = menuLinks.map((l: INavigation, i: number) => {
     return <MenuLinksBigScreen link={l} key={i} />;
   });
+
+  const underCategoriesJSX = underCategories.map((underCategory) => {
+    if (underCategories.length) {
+      return (
+        <a
+          href={underCategory.url}
+          key={underCategory.url}
+          className='underCategoryWrapper'
+        >
+          <i className={underCategory.icon}></i>
+          <p className='underCategoryTitle'>{underCategory.title}</p>
+        </a>
+      );
+    } else {
+      return;
+    }
+  });
+
   return (
     <>
       <MenuModal show={showMenuModal} close={() => setShowMenuModal(false)} />
@@ -43,7 +74,7 @@ export const Header = () => {
           <section className='iconsContainer'>
             <Person className='bi bi-person' />
             <Heart className='bi bi-heart' />
-            <Bag className='bi' />
+            <Bag className='bi' onClick={() => navigate("/checkout")} />
           </section>
         </div>
 
@@ -52,7 +83,13 @@ export const Header = () => {
             <SearchBar />
           </section>
 
-          <section className='bigScreenMenuContainer'>{menuLinksJSX}</section>
+          <section className='bigScreenMenuContainer'>
+            <div className='bigScreenMenuLinksContainer'>{menuLinksJSX}</div>
+
+            <div className='bigScreenMenuUnderCategoriesContainer'>
+              {underCategoriesJSX}
+            </div>
+          </section>
         </div>
       </header>
     </>

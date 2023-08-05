@@ -7,6 +7,9 @@ interface IProps {
 
 export const MenuLinksBigScreen = (props: IProps) => {
   const [onHover, setOnHover] = useState(false);
+  const queryParams = new URLSearchParams(window.location.search);
+  const category = queryParams.get("category");
+
   return (
     <div className='menuLinkContainer'>
       <a
@@ -17,19 +20,15 @@ export const MenuLinksBigScreen = (props: IProps) => {
         <h2
           onMouseEnter={() => setOnHover(true)}
           onMouseLeave={() => setOnHover(false)}
-          className={`${onHover ? "mainLinkHover" : "mainLink"}`}
+          className={`${
+            onHover || category === props.link.title
+              ? "mainLinkHover"
+              : "mainLink"
+          } `}
         >
           {props.link.title}
         </h2>
       </a>
-
-      {/*  {l.underCategory.map((u: INavigationBase) => {
-          return (
-            <div className='underCategoryContainer'>
-              <p>{u.title}</p>
-            </div>
-          );
-        })} */}
     </div>
   );
 };

@@ -9,6 +9,8 @@ import { IItem } from "../../../models/items/IItem";
 import "../../../styles/products/product.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { handleAddToCart } from "../../../services/helperFunctions/addToCart/addToCart";
+import { ICart } from "../../../models/cart/ICart";
 
 interface IProps {
   product: IItem;
@@ -58,14 +60,19 @@ export const Product = (props: IProps) => {
     navigate(`/products/product/${props.product.id}`);
   };
 
+  const handleAddItemToCart = () => {
+    const cartItem: ICart = { item: props.product, qty: 1 };
+
+    handleAddToCart(cartItem);
+  };
+
   return (
     <section
-      onClick={handleShowProductDetails}
       className='productContainer '
       onMouseEnter={startTimeout}
       onMouseLeave={cancelTimeout}
     >
-      <div className='productImage'>
+      <div className='productImage' onClick={handleShowProductDetails}>
         <Heart className='productHeartIcon' />
         <img
           className='softShadow'
@@ -78,7 +85,10 @@ export const Product = (props: IProps) => {
         <div>{getColors}</div>
         <div className='d-flex flex-row align-items-center justify-content-between'>
           <p>{props.product.price} €</p>
-          <BagPlus style={{ fontSize: "15pt" }} />
+          <BagPlus
+            style={{ fontSize: "15pt", cursor: "pointer" }}
+            onClick={handleAddItemToCart}
+          />
         </div>
       </div>
 

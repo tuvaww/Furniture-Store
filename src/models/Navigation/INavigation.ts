@@ -1,3 +1,5 @@
+import { JsxElement } from "typescript";
+
 export interface INavigation {
   title: string;
   url: string;
@@ -8,4 +10,5 @@ export interface INavigation {
 export interface INavigationBase {
   title: string;
   url: string;
+  icon?: string;
 }

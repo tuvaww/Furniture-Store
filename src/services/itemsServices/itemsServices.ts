@@ -52,7 +52,18 @@ export const itemsServices = {
     return item;
   },
   getItemByType: async (type: string) => {
-    const q = query(collectionRef, where("type", "==", "furniture"));
+    const typeLowerCase = type.toLocaleLowerCase();
+    const q = query(collectionRef, where("type", "==", typeLowerCase));
+
+    const querySnapshot = await getDocs(q);
+    let data = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
+
+    const convertType = data as IItem[];
+    return convertType;
+  },
+  getItemByDetailedType: async (detailedType: string) => {
+    const typeLowerCase = detailedType.toLocaleLowerCase();
+    const q = query(collectionRef, where("detailedType", "==", typeLowerCase));
 
     const querySnapshot = await getDocs(q);
     let data = querySnapshot.docs.map((doc) => ({ ...doc.data() }));

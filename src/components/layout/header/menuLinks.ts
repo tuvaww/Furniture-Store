@@ -1,6 +1,7 @@
 import { INavigation } from "../../../models/Navigation/INavigation";
 
 export const menuLinks: INavigation[] = [
+  { title: "Home", url: "/", underCategory: [] },
   {
     title: "News",
     url: "/",
@@ -8,17 +9,33 @@ export const menuLinks: INavigation[] = [
   },
   {
     title: "Furniture",
-    url: "/products/search?category=furniture",
+    url: "/products/search?category=Furniture&detailedType=null",
     underCategory: [
-      { title: "Tables", url: "/" },
-      { title: "Chairs", url: "/" },
-      { title: "TV Benches", url: "/" },
-      { title: "Sofas", url: "/" },
+      {
+        title: "Tables",
+        url: "/products/search?category=Furniture&detailedType=Table",
+        icon: "fa-solid fa-archway",
+      },
+      {
+        title: "Chairs",
+        url: "/products/search?category=Furniture&detailedType=Chair",
+        icon: "fa-solid fa-chair",
+      },
+      {
+        title: "TV Benches",
+        url: "/products/search?category=Furniture&detailedType=TvBench",
+        icon: "fa-solid fa-tv",
+      },
+      {
+        title: "Sofas",
+        url: "/products/search?category=Furniture&detailedType=Sofa",
+        icon: "fa-solid fa-couch",
+      },
     ],
   },
   {
     title: "Exterior",
-    url: "/products/search?category=exterior",
+    url: "/products/search?category=Exterior",
     underCategory: [
       { title: "Outdoor Tables", url: "/" },
       { title: "Outdoor Chairs", url: "/" },
@@ -29,7 +46,7 @@ export const menuLinks: INavigation[] = [
   },
   {
     title: "Lighting",
-    url: "/products/search?category=lighting",
+    url: "/products/search?category=Lighting",
     underCategory: [
       { title: "Wall Lamps", url: "/" },
       { title: "Floor Lamps", url: "/" },
@@ -41,7 +58,7 @@ export const menuLinks: INavigation[] = [
   },
   {
     title: "Storage",
-    url: "/products/search?category=storage",
+    url: "/products/search?category=Storage",
     underCategory: [
       { title: "Bookshelfs", url: "/" },
       { title: "Cabinets", url: "/" },
@@ -52,7 +69,7 @@ export const menuLinks: INavigation[] = [
   },
   {
     title: "Textile",
-    url: "/products/search?category=textile",
+    url: "/products/search?category=Textile",
     underCategory: [
       { title: "Mats", url: "/" },
       { title: "Blankets", url: "/" },
@@ -61,7 +78,7 @@ export const menuLinks: INavigation[] = [
   },
   {
     title: "Decoration",
-    url: "/products/search?category=decoration",
+    url: "/products/search?category=Decoration",
     underCategory: [
       { title: "Vases", url: "/" },
       { title: "Test", url: "/" },

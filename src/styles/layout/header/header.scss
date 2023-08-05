@@ -3,13 +3,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Jomolhari&display=swap");
 
 header {
-  height: 100px;
+  height: auto;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
+  //margin-bottom: 40px;
 
-  @include phone-level-3 {
+  /*  @include phone-level-3 {
     margin-bottom: 10px;
   }
 
@@ -22,21 +22,14 @@ header {
 
   @include desktop-level-3 {
     margin-bottom: 70px;
-  }
+  } */
 
   .firstRow {
-    height: 70%;
+    height: 80px;
     width: 100%;
     display: flex;
     justify-content: space-between;
 
-    @include tablet-level-2 {
-      margin-top: 10px;
-    }
-
-    @include desktop-level-3 {
-      margin-top: 20px;
-    }
     .logoMenuContainer {
       margin-left: 20px;
       height: 100%;
@@ -107,6 +100,7 @@ header {
       .bi {
         font-size: 20pt;
         color: black;
+        cursor: pointer;
       }
       .bi-heart {
         color: $pink;
@@ -140,12 +134,14 @@ header {
 
     .bigScreenMenuContainer {
       display: none;
+
       @include tablet-level-1 {
         width: 100%;
-        margin: 25px 60px 0 60px;
+        margin: 20px 60px 0 60px;
+        display: flex;
+        flex-direction: column;
 
         @include desktop-level-2 {
-          margin-top: 20px;
           width: 80%;
         }
 
@@ -154,29 +150,55 @@ header {
           width: 70%;
         }
 
-        display: flex;
-        justify-content: space-between;
+        .bigScreenMenuLinksContainer {
+          display: flex;
+          justify-content: space-between;
 
-        .menuLinkContainer {
-          font-family: "Quicksand", sans-serif;
-          cursor: pointer;
+          .menuLinkContainer {
+            font-family: "Quicksand", sans-serif;
+            cursor: pointer;
 
-          .mainLink,
-          .mainLinkHover {
-            font-size: 11pt;
+            .mainLink,
+            .mainLinkHover {
+              font-size: 11pt;
 
-            @include tablet-level-2 {
+              @include tablet-level-2 {
+                font-size: 14pt;
+              }
+
+              @include desktop-level-3 {
+                font-size: 15pt;
+              }
+            }
+
+            .mainLinkHover {
+              color: $lightGreen;
+              text-decoration: 2px underline $orange;
+            }
+          }
+        }
+
+        .bigScreenMenuUnderCategoriesContainer {
+          display: flex;
+          justify-content: center;
+          gap: 100px;
+          margin-top: 40px;
+
+          .underCategoryWrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: black;
+            text-decoration: none;
+
+            i {
               font-size: 14pt;
             }
 
-            @include desktop-level-3 {
-              font-size: 15pt;
+            .underCategoryTitle {
+              font-size: 9pt;
             }
-          }
-
-          .mainLinkHover {
-            color: $lightGreen;
-            text-decoration: 2px underline $orange;
           }
         }
       }

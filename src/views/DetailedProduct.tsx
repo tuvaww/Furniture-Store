@@ -14,6 +14,8 @@ import "../styles/detailedProduct/detailedProduct.scss";
 import { ImageCarousel } from "../components/carousel/ImageCarousel";
 import { DetailedInfo } from "../components/detailedProduct/detailedInfo/DetailedInfo";
 import { RecomendedProducts } from "../components/detailedProduct/recomendedProducts/RecomendedProducts";
+import { handleAddToCart } from "../services/helperFunctions/addToCart/addToCart";
+import { ICart } from "../models/cart/ICart";
 
 export const DetailedProduct = () => {
   const { id } = useParams();
@@ -65,6 +67,12 @@ export const DetailedProduct = () => {
     }
   };
 
+  const handleAddItemToCart = () => {
+    const cartItem: ICart = { item: product, qty: qty };
+
+    handleAddToCart(cartItem);
+  };
+
   const getColorsOfProd = product.colors.map((c: string, i: number) => {
     return (
       <div
@@ -109,6 +117,7 @@ export const DetailedProduct = () => {
           <button
             onMouseEnter={() => setHoverOnAddToCartButton(true)}
             onMouseLeave={() => setHoverOnAddToCartButton(false)}
+            onClick={handleAddItemToCart}
             style={{
               backgroundColor: `${
                 hoverOnAddToCartButton ? "#b5d5c5" : "rgba(181, 213, 197, 0.7)"

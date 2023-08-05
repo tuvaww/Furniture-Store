@@ -49,10 +49,18 @@
         height: 400px;
       }
 
+      @include desktop-level-2 {
+        height: 500px;
+      }
+
       .carouselItem {
         height: 300px;
         @include tablet-level-1 {
           height: 400px;
+        }
+
+        @include desktop-level-2 {
+          height: 500px;
         }
         .carouselImg {
           height: 100%;
@@ -91,6 +99,10 @@
 
         @include desktop-level-0 {
           width: 25%;
+        }
+
+        @include desktop-level-2 {
+          width: 20%;
         }
       }
     }

@@ -14,8 +14,6 @@ export const ImageCarousel = (props: IProps) => {
     setIndex(selectedIndex);
   };
 
-  console.log("index", index);
-
   const carouselItem = props.item.images.map((img: string) => {
     return (
       <Carousel.Item key={img} className='carouselItem'>
