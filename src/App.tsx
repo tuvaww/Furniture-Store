@@ -6,7 +6,7 @@ import { Layout } from "./components/layout/Layout";
 import { itemsServices } from "./services/itemsServices/itemsServices";
 import { Products } from "./views/Products";
 import { DetailedProduct } from "./views/DetailedProduct";
-import { Checkout } from "./views/Checkout";
+import { Cart } from "./views/Cart";
 
 function App() {
   useEffect(() => {
@@ -23,7 +23,7 @@ function App() {
           <Route index element={<Homepage />} />
           <Route path='/products/*' element={<Products />} />
           <Route path='/products/product/:id' element={<DetailedProduct />} />
-          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/cart' element={<Cart />} />
         </Route>
       </Routes>
     </Router>

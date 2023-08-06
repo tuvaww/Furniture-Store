@@ -14,7 +14,7 @@ import "../styles/detailedProduct/detailedProduct.scss";
 import { ImageCarousel } from "../components/carousel/ImageCarousel";
 import { DetailedInfo } from "../components/detailedProduct/detailedInfo/DetailedInfo";
 import { RecomendedProducts } from "../components/detailedProduct/recomendedProducts/RecomendedProducts";
-import { handleAddToCart } from "../services/helperFunctions/addToCart/addToCart";
+import { handleAddToCart } from "../services/helperFunctions/cartServices/cartServices";
 import { ICart } from "../models/cart/ICart";
 
 export const DetailedProduct = () => {
@@ -68,7 +68,7 @@ export const DetailedProduct = () => {
   };
 
   const handleAddItemToCart = () => {
-    const cartItem: ICart = { item: product, qty: qty };
+    const cartItem: ICart = { item: product, qty: qty, id: product.id };
 
     handleAddToCart(cartItem);
   };

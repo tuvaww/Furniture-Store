@@ -9,7 +9,7 @@ import { IItem } from "../../../models/items/IItem";
 import "../../../styles/products/product.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { handleAddToCart } from "../../../services/helperFunctions/addToCart/addToCart";
+import { handleAddToCart } from "../../../services/helperFunctions/cartServices/cartServices";
 import { ICart } from "../../../models/cart/ICart";
 
 interface IProps {
@@ -61,7 +61,11 @@ export const Product = (props: IProps) => {
   };
 
   const handleAddItemToCart = () => {
-    const cartItem: ICart = { item: props.product, qty: 1 };
+    const cartItem: ICart = {
+      item: props.product,
+      qty: 1,
+      id: props.product.id,
+    };
 
     handleAddToCart(cartItem);
   };

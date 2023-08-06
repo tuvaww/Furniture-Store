@@ -74,7 +74,7 @@ export const Header = () => {
           <section className='iconsContainer'>
             <Person className='bi bi-person' />
             <Heart className='bi bi-heart' />
-            <Bag className='bi' onClick={() => navigate("/checkout")} />
+            <Bag className='bi' onClick={() => navigate("/cart")} />
           </section>
         </div>
 

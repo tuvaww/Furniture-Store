@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { IItem } from "../models/items/IItem";
 import { ICart } from "../models/cart/ICart";
-import { Dash, Heart, Plus, Trash3 } from "react-bootstrap-icons";
-import "../styles/checkout/checkout.scss";
-import { CartItem } from "../components/checkout/cartItem/CartItem";
+import "../styles/cart/cart.scss";
+import { CartItem } from "../components/cart/cartItem/CartItem";
 
-export const Checkout = () => {
+export const Cart = () => {
   const [cart, setCart] = useState<ICart[]>([]);
   const [totalSum, setTotalSum] = useState(0);
   const [hoverOnButton, setHoverOnButton] = useState(false);
+  const [updateCart, setUpdateCart] = useState(false);
 
   useEffect(() => {
     const cartLocalseStorage = window.localStorage.getItem("cart");
@@ -16,7 +15,8 @@ export const Checkout = () => {
       const cartParsed = JSON.parse(cartLocalseStorage);
       setCart(cartParsed);
     }
-  }, []);
+    setUpdateCart(false);
+  }, [updateCart]);
 
   useEffect(() => {
     if (cart) {
@@ -29,6 +29,10 @@ export const Checkout = () => {
     }
   }, [cart]);
 
+  const handleUpdateCart = () => {
+    setUpdateCart(true);
+  };
+
   const handleTotalSum = (price: number, add: boolean) => {
     if (add) {
       setTotalSum(totalSum + price);
@@ -40,6 +44,7 @@ export const Checkout = () => {
   const cartJSX = cart.map((cartItem) => {
     return (
       <CartItem
+        handleUpdateCart={handleUpdateCart}
         key={cartItem.item.id}
         cartItem={cartItem}
         handleTotalSum={handleTotalSum}
@@ -52,27 +57,28 @@ export const Checkout = () => {
       <div className='headingContainer'>
         <h4>Cart</h4>
       </div>
+      <div className='contentContainer'>
+        <section className='cartContainer'>{cartJSX}</section>
 
-      <section className='cartContainer'>{cartJSX}</section>
+        <div className='proceedCheckoutContainer'>
+          <div className='totalPriceContainer'>
+            <h3>Total sum: </h3>
+            <h3>{totalSum} $</h3>
+          </div>
 
-      <div className='proceedCheckoutContainer'>
-        <div className='totalPriceContainer'>
-          <h3>Total sum: </h3>
-          <h3>{totalSum} $</h3>
+          <button
+            onMouseEnter={() => setHoverOnButton(true)}
+            onMouseLeave={() => setHoverOnButton(false)}
+            style={{
+              backgroundColor: `${
+                hoverOnButton ? "#b5d5c5" : "rgba(181, 213, 197, 0.7)"
+              }`,
+              color: `${hoverOnButton ? "white" : "black"}`,
+            }}
+          >
+            Proceed To Payment
+          </button>
         </div>
-
-        <button
-          onMouseEnter={() => setHoverOnButton(true)}
-          onMouseLeave={() => setHoverOnButton(false)}
-          style={{
-            backgroundColor: `${
-              hoverOnButton ? "#b5d5c5" : "rgba(181, 213, 197, 0.7)"
-            }`,
-            color: `${hoverOnButton ? "white" : "black"}`,
-          }}
-        >
-          Proceed To Payment
-        </button>
       </div>
     </main>
   );

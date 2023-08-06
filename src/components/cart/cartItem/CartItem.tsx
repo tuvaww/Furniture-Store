@@ -1,10 +1,12 @@
 import { Dash, Heart, Plus, Trash3 } from "react-bootstrap-icons";
 import { ICart } from "../../../models/cart/ICart";
 import { useEffect, useState } from "react";
+import { handleDeleteFromCart } from "../../../services/helperFunctions/cartServices/cartServices";
 
 interface IProps {
   cartItem: ICart;
   handleTotalSum: (price: number, add: boolean) => void;
+  handleUpdateCart: () => void;
 }
 export const CartItem = (props: IProps) => {
   const { cartItem } = props;
@@ -33,6 +35,11 @@ export const CartItem = (props: IProps) => {
     }
   };
 
+  const handleUpdateCart = () => {
+    handleDeleteFromCart(cartItem.id);
+    props.handleUpdateCart();
+  };
+
   return (
     <div key={cartItem.item.id} className='cartItemContainer'>
       <img
@@ -46,7 +53,7 @@ export const CartItem = (props: IProps) => {
 
           <div className='iconsContainer'>
             <Heart />
-            <Trash3 />
+            <Trash3 className='cartIcon' onClick={handleUpdateCart} />
           </div>
         </div>
 
