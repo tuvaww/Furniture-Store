@@ -5,6 +5,15 @@ const setStorage = (cart: ICart[]) => {
   window.localStorage.setItem("cart", JSON.stringify(cart));
 };
 
+export const getStorage = () => {
+  const cartLocalStorage = window.localStorage.getItem("cart");
+  const parseLS: ICart[] = JSON.parse(
+    cartLocalStorage ? cartLocalStorage : "[]"
+  );
+
+  return parseLS;
+};
+
 export const handleAddToCart = (item: ICart) => {
   let cart: ICart[] = [];
 
@@ -41,6 +50,33 @@ export const handleDeleteFromCart = (id: string) => {
       if (c.id === id) {
         const index = cart.indexOf(c);
         cart.splice(index, 1);
+        setStorage(cart);
+      }
+    });
+  }
+};
+
+export const handleQtyCart = (id: string, add: boolean) => {
+  const cartLocalStorage = window.localStorage.getItem("cart");
+  if (cartLocalStorage) {
+    const parseLS: ICart[] = JSON.parse(cartLocalStorage);
+    const cart = parseLS;
+    console.log("add", add);
+    cart.map((c) => {
+      if (c.id === id) {
+        if (add) {
+          console.log("true");
+          c.qty = c.qty + 1;
+        } else {
+          console.log("false");
+
+          if (c.qty - 1 <= 0) {
+            const index = cart.indexOf(c);
+            cart.splice(index, 1);
+          } else {
+            c.qty = c.qty - 1;
+          }
+        }
         setStorage(cart);
       }
     });

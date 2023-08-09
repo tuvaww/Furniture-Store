@@ -1,0 +1,54 @@
+@import "../../mixins/variables/variables";
+
+.checkoutSummaryContainer {
+  width: 100%;
+
+  .summaryHeadingContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    .summaryHeading {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .summaryContentContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    .summaryItemContainer {
+      width: 80%;
+      display: flex;
+      gap: 100px;
+      background-color: rgb(240, 234, 234);
+
+      padding: 20px;
+      box-shadow: $softShadow;
+
+      .summaryItemImg {
+        height: 120px;
+        width: 120px;
+        box-shadow: $softShadow;
+      }
+
+      .summaryItemInfoContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .summaryItemInfo {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}

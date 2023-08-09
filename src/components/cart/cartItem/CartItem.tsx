@@ -1,41 +1,30 @@
 import { Dash, Heart, Plus, Trash3 } from "react-bootstrap-icons";
 import { ICart } from "../../../models/cart/ICart";
 import { useEffect, useState } from "react";
-import { handleDeleteFromCart } from "../../../services/helperFunctions/cartServices/cartServices";
+import {
+  handleDeleteFromCart,
+  handleQtyCart,
+} from "../../../services/helperFunctions/cartServices/cartServices";
 
 interface IProps {
   cartItem: ICart;
-  handleTotalSum: (price: number, add: boolean) => void;
   handleUpdateCart: () => void;
 }
 export const CartItem = (props: IProps) => {
   const { cartItem } = props;
-  const [qty, setQty] = useState(cartItem.qty);
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     const sum = cartItem.qty * cartItem.item.price;
     setTotalPrice(sum);
-  }, []);
+  }, [cartItem.qty]);
 
-  const handleQty = (type: string) => {
-    if (type === "minus") {
-      if (qty - 1 >= 0) {
-        setQty(qty - 1);
-        setTotalPrice(totalPrice - cartItem.item.price);
-        props.handleTotalSum(cartItem.item.price, false);
-      } else {
-        return;
-      }
-    }
-    if (type === "plus") {
-      setQty(qty + 1);
-      setTotalPrice(totalPrice + cartItem.item.price);
-      props.handleTotalSum(cartItem.item.price, true);
-    }
+  const handleQty = (add: boolean) => {
+    handleQtyCart(cartItem.id, add);
+    props.handleUpdateCart();
   };
 
-  const handleUpdateCart = () => {
+  const handleDeleteItemFromCart = () => {
     handleDeleteFromCart(cartItem.id);
     props.handleUpdateCart();
   };
@@ -53,7 +42,7 @@ export const CartItem = (props: IProps) => {
 
           <div className='iconsContainer'>
             <Heart />
-            <Trash3 className='cartIcon' onClick={handleUpdateCart} />
+            <Trash3 className='cartIcon' onClick={handleDeleteItemFromCart} />
           </div>
         </div>
 
@@ -68,11 +57,11 @@ export const CartItem = (props: IProps) => {
         </div>
 
         <div className='handleQty'>
-          <Dash className='qtyHandlers' onClick={() => handleQty("minus")} />
+          <Dash className='qtyHandlers' onClick={() => handleQty(false)} />
           <div className='displayQty'>
-            <p>{qty}</p>
+            <p>{cartItem.qty}</p>
           </div>
-          <Plus className='qtyHandlers' onClick={() => handleQty("plus")} />
+          <Plus className='qtyHandlers' onClick={() => handleQty(true)} />
         </div>
       </div>
     </div>

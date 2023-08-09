@@ -1,0 +1,57 @@
+@import "../mixins/variables/variables";
+@import "../mixins/viewportSizes/viewportSizes";
+
+.checkoutMain {
+  width: 100vw;
+
+  .headingContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0 30px 0;
+    margin: 0;
+  }
+
+  .guideLineContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .guidelineCircle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: $orange;
+      // background-color: rgba($orange, 0.3);
+    }
+
+    .guideLine {
+      width: 150px;
+      background-color: $orange;
+      height: 4px;
+    }
+  }
+
+  .buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+
+    .checkoutButton {
+      padding: 10px 30px 10px 30px;
+      font-size: 12pt;
+      border-radius: 5px;
+      box-shadow: $softShadow;
+      border: 0;
+      background-color: $lightGreen;
+      color: white;
+
+      &:hover {
+        background-color: rgba(181, 213, 197, 0.7);
+        color: black;
+      }
+    }
+  }
+}

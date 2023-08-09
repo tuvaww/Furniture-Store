@@ -6,7 +6,6 @@ import { CartItem } from "../components/cart/cartItem/CartItem";
 export const Cart = () => {
   const [cart, setCart] = useState<ICart[]>([]);
   const [totalSum, setTotalSum] = useState(0);
-  const [hoverOnButton, setHoverOnButton] = useState(false);
   const [updateCart, setUpdateCart] = useState(false);
 
   useEffect(() => {
@@ -33,21 +32,12 @@ export const Cart = () => {
     setUpdateCart(true);
   };
 
-  const handleTotalSum = (price: number, add: boolean) => {
-    if (add) {
-      setTotalSum(totalSum + price);
-    } else {
-      setTotalSum(totalSum - price);
-    }
-  };
-
   const cartJSX = cart.map((cartItem) => {
     return (
       <CartItem
         handleUpdateCart={handleUpdateCart}
         key={cartItem.item.id}
         cartItem={cartItem}
-        handleTotalSum={handleTotalSum}
       />
     );
   });
@@ -66,18 +56,7 @@ export const Cart = () => {
             <h3>{totalSum} $</h3>
           </div>
 
-          <button
-            onMouseEnter={() => setHoverOnButton(true)}
-            onMouseLeave={() => setHoverOnButton(false)}
-            style={{
-              backgroundColor: `${
-                hoverOnButton ? "#b5d5c5" : "rgba(181, 213, 197, 0.7)"
-              }`,
-              color: `${hoverOnButton ? "white" : "black"}`,
-            }}
-          >
-            Proceed To Payment
-          </button>
+          <button>Proceed To Payment</button>
         </div>
       </div>
     </main>
