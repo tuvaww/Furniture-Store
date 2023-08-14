@@ -19,9 +19,9 @@ export const Checkout = () => {
       {/*       <CheckoutSummary />
        */}{" "}
       <CheckoutInformation />
-      <div className='buttonContainer'>
+      {/*  <div className='buttonContainer'>
         <button className='checkoutButton'>Continue</button>
-      </div>
+      </div> */}
     </main>
   );
 };
