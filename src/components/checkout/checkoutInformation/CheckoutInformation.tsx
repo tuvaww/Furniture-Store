@@ -1,7 +1,9 @@
 import React, {
+  ChangeEvent,
   FormEvent,
   FormEventHandler,
   InputHTMLAttributes,
+  useEffect,
   useState,
 } from "react";
 import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
@@ -11,15 +13,19 @@ import {
   handleValidateZipCode,
 } from "../../../services/helperFunctions/validation/validation";
 import { FaLessThanEqual } from "react-icons/fa";
+import { CheckoutSummary } from "../checkoutSummary/CheckoutSummary";
 
 export const CheckoutInformation = () => {
-  const [validationFName, setValidationFName] = useState(false);
-  const [validationLName, setValidationLName] = useState(false);
-  const [validationCity, setValidationCity] = useState(false);
-  const [validationState, setValidationState] = useState(false);
-  const [validationZip, setValidationZip] = useState(false);
+  const [validationFName, setValidationFName] = useState(true);
+  const [validationLName, setValidationLName] = useState(true);
+  const [validationCity, setValidationCity] = useState(true);
+  const [validationState, setValidationState] = useState(true);
+  const [validationZip, setValidationZip] = useState(true);
+
   const [checkbox, setCheckbox] = useState(false);
   const [validated, setValidated] = useState(false);
+
+  useEffect(() => {}, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -44,6 +50,7 @@ export const CheckoutInformation = () => {
     setValidationZip(zipValidation);
 
     setValidated(true);
+    //event.stopPropagation();
 
     /*   if (form.checkValidity() === false) {
       event.preventDefault();
@@ -53,79 +60,133 @@ export const CheckoutInformation = () => {
      */
   };
 
+  const handleOnChangeFirstName = (event: ChangeEvent<HTMLInputElement>) => {
+    const firstName = event.currentTarget.value;
+
+    const fNameValidation = handleValidateName(firstName);
+
+    setValidationFName(fNameValidation);
+  };
+
+  const handleOnChangeLastName = (event: ChangeEvent<HTMLInputElement>) => {
+    const lastName = event.currentTarget.value;
+
+    const lNameValidation = handleValidateName(lastName);
+
+    setValidationLName(lNameValidation);
+  };
+
+  const handleOnChangeCity = (event: ChangeEvent<HTMLInputElement>) => {
+    const city = event.currentTarget.value;
+
+    const cityValidation = handleValidateStringOnlyAlphabetic(city);
+
+    setValidationCity(cityValidation);
+  };
+
+  const handleOnChangeState = (event: ChangeEvent<HTMLInputElement>) => {
+    const state = event.currentTarget.value;
+
+    const stateValidation = handleValidateStringOnlyAlphabetic(state);
+
+    setValidationState(stateValidation);
+  };
+
+  const handleOnChangeZip = (event: ChangeEvent<HTMLInputElement>) => {
+    const zip = event.currentTarget.value;
+
+    const zipValidation = handleValidateStringOnlyAlphabetic(zip);
+
+    setValidationZip(zipValidation);
+  };
+
   return (
     <section className='checkoutFormContainer'>
-      <div className='checkoutFormHeadingContainer'>
-        <h6>Personal information</h6>
-      </div>
       <Form noValidate onSubmit={handleSubmit} className='checkoutForm'>
-        <Form.Group controlId='firstName'>
+        <div className='checkoutFormHeadingContainer'>
+          <h6>Personal information</h6>
+        </div>
+        <Form.Group controlId='firstName' className='mb-1'>
           <Form.Label>First name</Form.Label>
           <Form.Control
-            isValid={validationFName ? true : false}
-            isInvalid={validationFName ? false : true}
+            isValid={validationFName && validated ? true : false}
+            /*             isInvalid={!validationFName && validated ? true : false}
+             */ isInvalid={validationFName ? false : true}
             required
             type='text'
             placeholder='First name'
-            // onChange={(e:React.FormEvent<HTMLInputElement>) => handleValidateName(e.currentTarget.value)}
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              handleOnChangeFirstName(event)
+            }
           />
           <Form.Control.Feedback type='invalid'>
             Please provide a valid name.
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group controlId='lastName'>
+        <Form.Group controlId='lastName' className='mb-1'>
           <Form.Label>Last name</Form.Label>
           <Form.Control
-            isValid={validationLName ? true : false}
+            isValid={validationLName && validated ? true : false}
             isInvalid={validationLName ? false : true}
             required
             type='text'
             placeholder='Last name'
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              handleOnChangeLastName(event)
+            }
           />
           <Form.Control.Feedback type='invalid'>
             Please provide a valid name.
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group controlId='city'>
+        <Form.Group controlId='city' className='mb-1'>
           <Form.Label>City</Form.Label>
           <Form.Control
-            isValid={validationCity ? true : false}
+            isValid={validationCity && validated ? true : false}
             isInvalid={validationCity ? false : true}
             type='text'
             placeholder='City'
             required
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              handleOnChangeCity(event)
+            }
           />
           <Form.Control.Feedback type='invalid'>
             Please provide a valid city.
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group controlId='state'>
+        <Form.Group controlId='state' className='mb-1'>
           <Form.Label>State</Form.Label>
           <Form.Control
-            isValid={validationState ? true : false}
+            isValid={validationState && validated ? true : false}
             isInvalid={validationState ? false : true}
             type='text'
             placeholder='State'
             required
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              handleOnChangeState(event)
+            }
           />
           <Form.Control.Feedback type='invalid'>
             Please provide a valid state.
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group controlId='zip'>
+        <Form.Group controlId='zip' className='mb-3'>
           <Form.Label>Zip</Form.Label>
           <Form.Control
-            isValid={validationZip ? true : false}
+            isValid={validationZip && validated ? true : false}
             isInvalid={validationZip ? false : true}
             type='text'
             placeholder='Zip'
             required
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              handleOnChangeZip(event)
+            }
           />
           <Form.Control.Feedback type='invalid'>
-            Please provide a valid zip. 5 numbers, not containing other
-            characters.
+            Please provide a valid zipcode consisting of five digits.
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className='mb-3'>
@@ -134,13 +195,23 @@ export const CheckoutInformation = () => {
             label='Agree to terms and conditions'
             feedback='You must agree before submitting.'
             feedbackType='invalid'
+            isValid={checkbox && validated ? true : false}
+            isInvalid={!checkbox && validated ? true : false}
             onChange={(event: FormEvent<HTMLInputElement>) =>
               setCheckbox(event.currentTarget.checked)
             }
           />
         </Form.Group>
-        <Button type='submit'>Submit form</Button>
+        <div className='buttonContainer'>
+          <Button className='checkoutButton' type='submit'>
+            Continue
+          </Button>
+        </div>
       </Form>
+
+      {/*   <div className='checkoutSummaryContainerCheckout'>
+        <CheckoutSummary />
+      </div> */}
     </section>
   );
 };

@@ -1,3 +1,4 @@
+import { CheckoutComponent } from "../components/checkout/CheckoutComponent";
 import { CheckoutInformation } from "../components/checkout/checkoutInformation/CheckoutInformation";
 import { CheckoutSummary } from "../components/checkout/checkoutSummary/CheckoutSummary";
 import "../styles/checkout/checkout.scss";
@@ -16,6 +17,8 @@ export const Checkout = () => {
 
         <div className='guidelineCircle'></div>
       </section>
+      {/*       <CheckoutComponent />
+       */}{" "}
       {/*       <CheckoutSummary />
        */}{" "}
       <CheckoutInformation />

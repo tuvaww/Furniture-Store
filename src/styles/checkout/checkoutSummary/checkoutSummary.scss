@@ -24,6 +24,9 @@
     align-items: center;
     gap: 10px;
 
+    max-height: 60vh;
+    overflow-y: scroll;
+
     .summaryItemContainer {
       width: 80%;
       display: flex;

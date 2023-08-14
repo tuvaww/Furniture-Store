@@ -55,6 +55,11 @@
     }
   }
 
+  .checkoutComponentContainer {
+    width: 100vw;
+    display: flex;
+  }
+
   .checkoutFormContainer {
     width: 100%;
     display: flex;
@@ -62,11 +67,40 @@
     align-items: center;
     margin-top: 40px;
 
+    /*  @include tablet-level-3 {
+      flex-direction: row;
+      justify-content: center;
+      gap: 20px;
+    } */
+
     .checkoutFormHeadingContainer {
       width: 100%;
       display: flex;
       justify-content: center;
       margin-bottom: 10px;
     }
+
+    .checkoutForm {
+      width: 330px;
+
+      /*   @include tablet-level-3 {
+        width: 50%;
+      } */
+    }
+
+    /*   .checkoutSummaryContainerCheckout {
+      display: none;
+
+      @include tablet-level-3 {
+        display: block;
+        max-height: 60vh;
+        overflow-y: scroll;
+        width: 50%;
+      }
+
+      .summaryHeadingContainer {
+        margin: 0;
+      }
+    } */
   }
 }
